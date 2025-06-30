@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WhatsApp Submit</title>
+</head>
+<body>
+
+  <form id="whatsappForm">
+    <label for="name">Your Name:</label>
+    <input type="text" id="name" required>
+
+    <label for="message">Message:</label>
+    <input type="text" id="message" required>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById("whatsappForm").addEventListener("submit", function(event) {
+      event.preventDefault(); // Prevent form from submitting normally
+
+      const name = document.getElementById("name").value;
+      const message = document.getElementById("message").value;
+
+      const phoneNumber = "1234567890"; // 🔁 Replace with your WhatsApp number (with country code, no +)
+      const text = `Hello, my name is ${encodeURIComponent(name)}. ${encodeURIComponent(message)}`;
+
+      const whatsappURL = `https://wa.me/${phoneNumber}?text=${text}`;
+
+      // Open WhatsApp link
+      window.open(whatsappURL, "_blank");
+    });
+  </script>
+
+</body>
+</html>
